@@ -4,9 +4,9 @@ string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
 //List<string> listaDasBandas = new List<string> { "Red Hot Chili Peppers", "The Bealtes", "U2", "Oasis", "Queen" };
 
 Banda rhcp = new("Red Hot Chili Peppers");
-rhcp.AdicionarNota(10);
-rhcp.AdicionarNota(9);
-rhcp.AdicionarNota(8);
+rhcp.AdicionarNota(new Avaliacao(10));
+rhcp.AdicionarNota(new Avaliacao(9));
+rhcp.AdicionarNota(new Avaliacao(8));
 Banda pinkfloyd = new("Pink Floyd");
 
 Dictionary<string, Banda> bandasRegistradas = new();
@@ -136,9 +136,9 @@ void AvaliarUmaBanda()
     {
         Banda banda = bandasRegistradas[nomeDaBanda];
         Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
-        int nota = int.Parse(Console.ReadLine()!);
+        Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
         banda.AdicionarNota(nota);
-        Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
+        Console.WriteLine($"\nA nota {nota.Nota} foi registrada com sucesso para a banda {nomeDaBanda}");
         Thread.Sleep(2000);
         Console.Clear();
         ExibirOpcoesDoMenu();
